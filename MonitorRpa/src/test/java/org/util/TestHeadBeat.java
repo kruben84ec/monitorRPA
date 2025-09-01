@@ -2,6 +2,9 @@ package org.util;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.sql.Time;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestHeadBeat {
@@ -9,6 +12,39 @@ public class TestHeadBeat {
     @BeforeEach
     void initTest() {
         this.headBeat = new HeadBeat();
+    }
+
+    @Test
+    void testGetUsoRed() {
+        //Given
+        HeadBeat healthBeat = this.headBeat;
+        //When
+        String usoRed = healthBeat.getUsoRed();
+        //Then
+        assertNotNull(usoRed);
+        assertTrue(usoRed.contains("Interfaz:"));
+    }
+    @Test
+    void testInitHealthBeat() {
+        //Given
+        HeadBeat healthBeat = this.headBeat;
+        Time time = new Time(System.currentTimeMillis());
+        //When
+        Time timeExpected = healthBeat.initHealthBeat();
+        assertNotNull(healthBeat.initHealthBeat());
+        assertEquals(time, timeExpected);
+    }
+    @Test
+    void testStatus() {
+        //Given
+        HeadBeat healthBeat = this.headBeat;
+        Boolean statusInicial = healthBeat.getStatus();
+        //When
+        healthBeat.setStatus(true);
+        Boolean statusEsperado = healthBeat.getStatus();
+        //Then
+        assertFalse(statusInicial);
+        assertTrue(statusEsperado);
     }
     @Test
     void testNombreBot() {
