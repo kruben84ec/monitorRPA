@@ -8,16 +8,16 @@ import java.sql.Time;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestHeadBeat {
-    private HeadBeat headBeat;
+    private HealthBeat headBeat;
     @BeforeEach
     void initTest() {
-        this.headBeat = new HeadBeat();
+        this.headBeat = new HealthBeat();
     }
 
     @Test
     void testGetUsoRed() {
         //Given
-        HeadBeat healthBeat = this.headBeat;
+        HealthBeat healthBeat = this.headBeat;
         //When
         String usoRed = healthBeat.getUsoRed();
         //Then
@@ -27,7 +27,7 @@ public class TestHeadBeat {
     @Test
     void testInitHealthBeat() {
         //Given
-        HeadBeat healthBeat = this.headBeat;
+        HealthBeat healthBeat = this.headBeat;
         Time time = new Time(System.currentTimeMillis());
         //When
         Time timeExpected = healthBeat.initHealthBeat();
@@ -37,7 +37,7 @@ public class TestHeadBeat {
     @Test
     void testStatus() {
         //Given
-        HeadBeat healthBeat = this.headBeat;
+        HealthBeat healthBeat = this.headBeat;
         Boolean statusInicial = healthBeat.getStatus();
         //When
         healthBeat.setStatus(true);
@@ -49,7 +49,7 @@ public class TestHeadBeat {
     @Test
     void testNombreBot() {
         //Given
-        HeadBeat healthBeat = this.headBeat;
+        HealthBeat healthBeat = this.headBeat;
         String nombre = "TestBot";
         //When
         healthBeat.setNombreBot(nombre);
@@ -59,7 +59,7 @@ public class TestHeadBeat {
     }
     @Test
     public void testMonitoreoRecursos() {
-        HeadBeat monitor = this.headBeat;
+        HealthBeat monitor = this.headBeat;
         // Prueba CPU
         String cpuInfo = monitor.getUsoCPU();
         assertNotNull(cpuInfo);

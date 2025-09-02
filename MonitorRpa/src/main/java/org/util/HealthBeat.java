@@ -9,8 +9,12 @@ import oshi.hardware.NetworkIF;
 
 import java.util.List;
 
-public class HeadBeat {
+public class HealthBeat{
 
+    public HealthBeat() {
+        this.setStatus(false);
+        this.prevTicks = processor.getSystemCpuLoadTicks();
+    }
     public String getNombreBot() {
         return nombreBot;
     }
@@ -36,10 +40,6 @@ public class HeadBeat {
     private long[] prevTicks;
     private long[] currTicks;
 
-    public HeadBeat() {
-        this.setStatus(false);
-        this.prevTicks = processor.getSystemCpuLoadTicks();
-    }
 
     public Time initHealthBeat() {
         return new Time(System.currentTimeMillis());
