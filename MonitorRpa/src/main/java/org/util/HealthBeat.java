@@ -10,6 +10,11 @@ import oshi.hardware.NetworkIF;
 import java.util.List;
 
 public class HealthBeat{
+    private Boolean status;
+    private SystemInfo si = new SystemInfo();
+    private CentralProcessor processor = si.getHardware().getProcessor();
+    private long[] prevTicks;
+    private long[] currTicks;
 
     public HealthBeat() {
         this.setStatus(false);
@@ -33,12 +38,6 @@ public class HealthBeat{
         this.status = status;
     }
 
-    private Boolean status;
-
-    private SystemInfo si = new SystemInfo();
-    private CentralProcessor processor = si.getHardware().getProcessor();
-    private long[] prevTicks;
-    private long[] currTicks;
 
 
     public Time initHealthBeat() {
